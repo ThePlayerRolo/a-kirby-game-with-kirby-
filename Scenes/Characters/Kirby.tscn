@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4h8a8j04158o"]
+
+[ext_resource type="Script" uid="uid://dlo3qqs3yt7iq" path="res://Scenes/Characters/Kirby.gd" id="1_11l5l"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b48ry"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_11l5l"]
+
+[node name="Kirby" type="CharacterBody3D"]
+script = ExtResource("1_11l5l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_b48ry")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_11l5l")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(0.996492, 0.0202607, -0.0811996, 0.0137347, 0.917505, 0.397487, 0.0825544, -0.397208, 0.914008, 0, 1.371, 2.943)

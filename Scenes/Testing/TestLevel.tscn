@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://fr2orkkbyo43"]
+
+[ext_resource type="PackedScene" uid="uid://d4h8a8j04158o" path="res://Scenes/Characters/Kirby.tscn" id="1_mww2w"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mww2w"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_n31ti"]
+sky_material = SubResource("ProceduralSkyMaterial_mww2w")
+
+[sub_resource type="Environment" id="Environment_li7tw"]
+background_mode = 2
+sky = SubResource("Sky_n31ti")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_yni5v"]
+size = Vector3(37.266, 1, 36.176)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mww2w"]
+size = Vector3(37.2661, 1, 36.1761)
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_li7tw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.858, 0, 8.784)
+mesh = SubResource("BoxMesh_yni5v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1.00332, 0, 0, 0, 1.00332, 0, 0, 0, 1.00332, 1.85843, 0, 8.78387)
+shape = SubResource("BoxShape3D_mww2w")
+
+[node name="Kirby" parent="." instance=ExtResource("1_mww2w")]
+transform = Transform3D(0.999974, 0, -0.0072256, 0, 1, 0, 0.0072256, 0, 0.999974, 0.118827, 1.50166, 0.390403)
